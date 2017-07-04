@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="ProductoService">
+      <implementation-class>cl.duoc.servicio.ProductoService</implementation-class>
+    </service>
+    <service name="CategoriaService">
+      <implementation-class>cl.duoc.servicio.CategoriaService</implementation-class>
+    </service>
+  </services>
+  <clients/>
+</jax-ws>
