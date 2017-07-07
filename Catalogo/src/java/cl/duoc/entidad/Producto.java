@@ -40,6 +40,9 @@ public class Producto implements Serializable {
     @Column(name = "PRECIO")
     private Long precio;
     @Size(max = 255)
+    @Column(name = "IMAGEN")
+    private String imagen;
+    @Size(max = 255)
     @Column(name = "DESCRIPCION")
     private String descripcion;
     @JoinColumn(name = "CATEGORIA_ID", referencedColumnName = "ID")
@@ -77,6 +80,14 @@ public class Producto implements Serializable {
 
     public Long getPrecio() {
         return precio;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public void setPrecio(Long precio) {

@@ -19,12 +19,14 @@ public class ClienteServicio {
     EntityManager em;
     
     @WebMethod(action = "crearCliente")
-    public Cliente crearCliente(@WebParam(name = "clienteId") Long id, @WebParam(name = "nombreCliente") String nombre, @WebParam(name = "edad") Integer edad, @WebParam(name = "telefonoMovil") String telefonoMovil){
+    public Cliente crearCliente(@WebParam(name = "clienteId") Long id, @WebParam(name = "nombreCliente") String nombre, @WebParam(name = "usuario") String usuario, @WebParam(name = "contrasena") String contrasena, @WebParam(name = "edad") Integer edad, @WebParam(name = "telefonoMovil") String telefonoMovil){
         Cliente c = new Cliente();
         c.setId(id);
         c.setNombre(nombre);
         c.setTelefonoMovil(telefonoMovil);
         c.setEdad(edad);
+        c.setUsuario(usuario);
+        c.setContrasena(contrasena);
         em.persist(c);
         return c;
     }
@@ -33,8 +35,14 @@ public class ClienteServicio {
     public Cliente editarCliente(@WebParam(name = "clienteId") Long clienteId, @WebParam(name = "nombreCliente") String nombre, @WebParam(name = "edad") Integer edad){
         Cliente c = em.find(Cliente.class, clienteId);
         c.setNombre(nombre);
-        c.setEdad(edad);
-        em.persist(c);
+        c.setEdad(edad);        
+        return c;
+    }
+    
+    @WebMethod(action = "cambiarContrasena")
+    public Cliente cambiarContrasena(@WebParam(name = "clienteId") Long clienteId, @WebParam(name = "contrasena") String contrasena){
+        Cliente c = em.find(Cliente.class, clienteId);
+        c.setContrasena(contrasena);
         return c;
     }
     

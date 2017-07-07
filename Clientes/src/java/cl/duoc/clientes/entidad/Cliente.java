@@ -42,6 +42,16 @@ public class Cliente implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
+    @Column(name = "USUARIO")
+    private String usuario;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 4)
+    @Column(name = "CONTRASENA")
+    private String contrasena;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "TELEFONO_MOVIL")
     private String telefonoMovil;
     @Basic(optional = false)
@@ -78,6 +88,22 @@ public class Cliente implements Serializable {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public void setNombre(String nombre) {

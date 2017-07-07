@@ -19,11 +19,12 @@ public class ProductoService {
     EntityManager em;
     
     @WebMethod(action = "crearProducto")
-    public Producto crearProducto(@WebParam(name = "productoId") Long id, @WebParam(name = "nombreProducto") String producto, @WebParam(name = "precio") Long precio, @WebParam(name = "descripcion") String descripcion, @WebParam(name = "categoriaId") Long categoriaId){
+    public Producto crearProducto(@WebParam(name = "productoId") Long id, @WebParam(name = "nombreProducto") String producto, @WebParam(name = "precio") Long precio, @WebParam(name = "imagen") String imagen, @WebParam(name = "descripcion") String descripcion, @WebParam(name = "categoriaId") Long categoriaId){
         Producto p = new Producto();
         p.setId(id);
         p.setProducto(producto);
         p.setPrecio(precio);
+        p.setImagen(imagen);
         p.setDescripcion(descripcion);
         Categoria categoria = em.find(Categoria.class, categoriaId);
         p.setCategoria(categoria);
@@ -53,5 +54,12 @@ public class ProductoService {
     public List<Producto> getProductos(){
         TypedQuery<Producto> query = em.createNamedQuery("Producto.findAll", Producto.class);
         return query.getResultList();
+    }
+    
+    @WebMethod(action = "getProductoById")
+    public Producto getProductoById(@WebParam(name = "productoId") Long id){
+        TypedQuery<Producto> query = em.createNamedQuery("Producto.findById", Producto.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
     }
 }

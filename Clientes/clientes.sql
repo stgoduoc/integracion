@@ -3,6 +3,8 @@ CREATE TABLE cliente(
   , nombre varchar(255) not null
   , telefono_movil varchar(20) not null
   , edad int not null
+  , usuario varchar(20) not null
+  , contrasena varchar(4) not null
 );
 
 CREATE TABLE direccion(
